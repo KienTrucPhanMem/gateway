@@ -16,6 +16,22 @@ const ROUTES = [
       },
     },
   },
+  {
+    url: "/passengers",
+    auth: false,
+    creditCheck: false,
+    rateLimit: {
+      windowMs: 15 * 60 * 1000,
+      max: 50,
+    },
+    proxy: {
+      target: "http://localhost:8002",
+      changeOrigin: true,
+      pathRewrite: {
+        [`^/`]: "/api/",
+      },
+    },
+  },
 ];
 
 export { ROUTES };
