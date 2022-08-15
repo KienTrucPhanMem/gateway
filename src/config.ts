@@ -9,7 +9,7 @@ const ROUTES = [
     },
     proxy: {
       filter: "!/auth/register",
-      target: "http://localhost:8001",
+      target: "https://ktpm-authen.herokuapp.com",
       changeOrigin: true,
       pathRewrite: {
         [`^/auth`]: "/api/",
@@ -25,7 +25,7 @@ const ROUTES = [
       max: 50,
     },
     proxy: {
-      target: "http://localhost:8002",
+      target: "https://ktpm-user.herokuapp.com",
       changeOrigin: true,
       pathRewrite: {
         [`^/`]: "/api/",
