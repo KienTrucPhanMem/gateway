@@ -32,6 +32,22 @@ const ROUTES = [
       },
     },
   },
+  {
+    url: "/drivers",
+    auth: false,
+    creditCheck: false,
+    rateLimit: {
+      windowMs: 15 * 60 * 1000,
+      max: 50,
+    },
+    proxy: {
+      target: "https://ktpm-driver.herokuapp.com",
+      changeOrigin: true,
+      pathRewrite: {
+        [`^/`]: "/api/",
+      },
+    },
+  },
 ];
 
 export { ROUTES };
