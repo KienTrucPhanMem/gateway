@@ -8,13 +8,18 @@ const authController = {
 
     try {
       const registerRes = await axios.post(
-        "http://localhost:8001/api/register",
+        "https://ktpm-authen.herokuapp.com/api/register",
         { phone: body.phone, password: body.password }
       );
 
       if (body.password) delete body.password;
 
-      await axios.post("http://localhost:8002/api/passengers", body);
+      await axios.post(
+        body.role === "USER"
+          ? "https://ktpm-user.herokuapp.com/api/passengers"
+          : "https://ktpm-driver.herokuapp.com/api/drivers",
+        body
+      );
 
       return res.send({
         accessToken: registerRes.data.accessToken,
