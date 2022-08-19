@@ -8,7 +8,7 @@ const setupProxies = (app: Application, routes: any) => {
       createProxyMiddleware(r.proxy.filter || "**", {
         ...r.proxy,
         onProxyReq: (proxyReq: any, req: any) => {
-          // console.log(proxyReq);
+          console.log(proxyReq);
           // console.log(req);
         },
         onProxyRes: (proxyRes: any, res: any) => {
