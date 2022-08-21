@@ -22,6 +22,8 @@ if (process.env.NODE_ENV === "development") {
 /* ROUTING */
 router(app);
 
+require("./configs/db")();
+
 setupProxies(app, ROUTES);
 
 /* START SERVER */

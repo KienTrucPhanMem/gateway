@@ -33,6 +33,21 @@ const ROUTES = [
     },
   },
   {
+    url: "/drivers/socket",
+    auth: false,
+    creditCheck: false,
+    rateLimit: {
+      windowMs: 15 * 60 * 1000,
+      max: 50,
+    },
+    proxy: {
+      target: "https://ktpm-driver.herokuapp.com",
+      changeOrigin: true,
+      ws: true,
+      logLevel: "debug",
+    },
+  },
+  {
     url: "/drivers",
     auth: false,
     creditCheck: false,
