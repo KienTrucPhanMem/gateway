@@ -56,6 +56,7 @@ const ROUTES = [
       max: 50,
     },
     proxy: {
+      filter: "!/drivers/booking",
       target: "https://ktpm-driver.herokuapp.com",
       changeOrigin: true,
       pathRewrite: {
