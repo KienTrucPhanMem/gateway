@@ -18,7 +18,15 @@ const setupProxies = (app: Application, routes: any) => {
             buffers.push(chunk);
           }
 
-          const data = Buffer.concat(buffers).toString();
+          let data: any = {};
+
+          try {
+            const sData = Buffer.concat(buffers).toString();
+
+            data = JSON.parse(sData);
+          } catch (e) {
+            console.log(e);
+          }
 
           const log = {
             protocol: req.protocol,
@@ -26,7 +34,7 @@ const setupProxies = (app: Application, routes: any) => {
             path: req.path,
             reqHeaders: req.headers,
             method: req.method,
-            reqData: JSON.parse(data),
+            reqData: data,
             reqTime: new Date().getTime(),
             query: req.query,
             params: req.params,
