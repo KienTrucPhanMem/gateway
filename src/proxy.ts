@@ -23,7 +23,7 @@ const setupProxies = (app: Application, routes: any) => {
           try {
             const sData = Buffer.concat(buffers).toString();
 
-            data = JSON.parse(sData);
+            if (sData) data = JSON.parse(sData);
           } catch (e) {
             console.log(e);
           }
