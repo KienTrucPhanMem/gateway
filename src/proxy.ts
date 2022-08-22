@@ -58,7 +58,11 @@ const setupProxies = (app: Application, routes: any) => {
         },
         onProxyRes: responseInterceptor(
           async (responseBuffer, proxyRes, req, res) => {
+            console.log(1);
+
             const response = responseBuffer.toString("utf8"); // convert buffer to string
+
+            console.log(2);
 
             const log = {
               protocol: (proxyRes as any).req.protocol,
